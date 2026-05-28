@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Wedding System | Elegant Gift Registry</title>
     
-    <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
     
     <style>
@@ -29,13 +28,10 @@
         :root {
             --primary: #8B5E3C;
             --primary-dark: #6B3F2A;
-            --primary-light: #C4A57B;
             --accent: #D4AF37;
-            --accent-soft: #E8D5A3;
             --cream: #FFF9F0;
             --text-dark: #2C2418;
             --text-muted: #7A6B5A;
-            --success: #2E7D32;
             --danger: #C62828;
             --border: #E2D5C0;
             --shadow-sm: 0 4px 12px rgba(0,0,0,0.08);
@@ -82,7 +78,9 @@
             font-weight: 600;
             color: var(--primary-dark);
             cursor: pointer;
+            transition: all 0.2s;
         }
+        .logout-btn:active { transform: scale(0.95); background: var(--border); }
         .logo-area h1 {
             font-family: 'Playfair Display', serif;
             font-size: 1.8rem;
@@ -114,6 +112,16 @@
             color: white;
             margin-bottom: 28px;
             box-shadow: var(--shadow-md);
+            position: relative;
+            overflow: hidden;
+        }
+        .summary-card::before {
+            content: "✦";
+            position: absolute;
+            right: 10px;
+            top: -20px;
+            font-size: 80px;
+            opacity: 0.08;
         }
         .summary-title {
             font-size: 0.7rem;
@@ -169,7 +177,7 @@
             align-items: center;
             gap: 8px;
         }
-        .section-title span { background: var(--accent-soft); width: 30px; height: 2px; flex: 1; }
+        .section-title span { background: var(--accent); width: 30px; height: 2px; flex: 1; opacity: 0.5; }
 
         .guest-list {
             display: flex;
@@ -185,7 +193,9 @@
             align-items: center;
             box-shadow: var(--shadow-sm);
             border: 1px solid var(--border);
+            transition: all 0.2s;
         }
+        .guest-card:active { transform: scale(0.99); }
         .guest-info h4 { 
             font-size: 1rem; 
             font-weight: 700; 
@@ -202,7 +212,7 @@
         .badge.groom { background: #FFF3E0; color: #C45C1B; }
         .badge.bride { background: #FCE4EC; color: #AD1457; }
         .badge.both { background: #E8EAF6; color: #3949AB; }
-        .guest-time { font-size: 0.6rem; color: var(--text-muted); margin-top: 4px; }
+        .guest-time { font-size: 0.6rem; color: var(--text-muted); margin-top: 4px; display: inline-block; margin-left: 6px; }
 
         .guest-amount h3 {
             font-family: 'Playfair Display', serif;
@@ -224,9 +234,11 @@
             padding: 4px 8px;
             border-radius: 20px;
             cursor: pointer;
+            transition: all 0.15s;
         }
         .edit-btn { color: var(--primary-dark); }
         .delete-btn { color: var(--danger); }
+        .action-btn:active { opacity: 0.6; }
 
         .form-container {
             background: white;
@@ -253,10 +265,12 @@
             border-radius: 28px;
             font-size: 0.9rem;
             font-family: inherit;
+            transition: all 0.2s;
         }
         input:focus, select:focus {
             outline: none;
             border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
         }
         .quick-chips {
             display: flex;
@@ -273,7 +287,9 @@
             color: var(--primary);
             cursor: pointer;
             border: 1px solid var(--border);
+            transition: all 0.15s;
         }
+        .chip:active { background: var(--accent); color: white; transform: scale(0.95); }
 
         .btn-primary {
             width: 100%;
@@ -286,7 +302,9 @@
             font-size: 0.9rem;
             cursor: pointer;
             margin-top: 8px;
+            transition: all 0.2s;
         }
+        .btn-primary:active { transform: scale(0.97); opacity: 0.9; }
 
         .search-container {
             position: relative;
@@ -319,7 +337,9 @@
             font-weight: 600;
             font-size: 0.7rem;
             cursor: pointer;
+            transition: all 0.15s;
         }
+        .action-btn-sec:active { transform: scale(0.97); }
         .export-btn { color: var(--primary); }
         .clear-btn { color: var(--danger); }
 
@@ -345,6 +365,7 @@
             color: var(--text-muted);
             cursor: pointer;
             flex: 1;
+            transition: all 0.2s;
         }
         .nav-item svg {
             width: 24px;
@@ -372,6 +393,8 @@
             box-shadow: 0 8px 20px rgba(139, 94, 60, 0.3);
         }
         .nav-item.center-btn span { display: none; }
+        .nav-item.center-btn svg { stroke: white; stroke-width: 2; }
+
         .toast {
             position: absolute;
             top: -80px;
@@ -382,8 +405,11 @@
             padding: 12px 24px;
             border-radius: 60px;
             font-size: 0.8rem;
+            font-weight: 500;
             z-index: 200;
             transition: top 0.3s ease;
+            white-space: nowrap;
+            box-shadow: var(--shadow-md);
         }
         .toast.show { top: 70px; }
         .empty-state {
@@ -409,6 +435,7 @@
         </div>
     </header>
 
+    <!-- Dashboard View -->
     <main id="view-home" class="view-content active">
         <div class="summary-card">
             <div class="summary-title">TOTAL BALANCE (USD)</div>
@@ -430,6 +457,7 @@
         <div id="recentList" class="guest-list"></div>
     </main>
 
+    <!-- Add/Edit View -->
     <main id="view-add" class="view-content">
         <div class="section-title" style="margin-top:0"><span>✎</span> Record a Gift <span></span></div>
         <div class="form-container">
@@ -448,6 +476,7 @@
                     <div class="chip" onclick="quickAmount(100, 'USD')">$100</div>
                     <div class="chip" onclick="quickAmount(50000, 'KHR')">50k ៛</div>
                     <div class="chip" onclick="quickAmount(100000, 'KHR')">100k ៛</div>
+                    <div class="chip" onclick="quickAmount(200000, 'KHR')">200k ៛</div>
                 </div>
                 <div class="input-group">
                     <label>💱 Currency</label>
@@ -470,6 +499,7 @@
         </div>
     </main>
 
+    <!-- Registry View -->
     <main id="view-list" class="view-content">
         <div class="search-container">
             <svg class="search-icon" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
@@ -482,6 +512,7 @@
         <div id="fullList" class="guest-list"></div>
     </main>
 
+    <!-- Bottom Navigation -->
     <nav class="bottom-nav">
         <div class="nav-item active" onclick="switchTab('home', this)">
             <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
@@ -499,10 +530,12 @@
 </div>
 
 <script>
+    // User System
     let currentUser = null;
     let gifts = [];
     let editId = null;
 
+    // Initialize or load existing user
     const saved = localStorage.getItem('wedding_system_user');
     if (saved) {
         currentUser = JSON.parse(saved);
@@ -524,7 +557,9 @@
     }
 
     function formatMoney(amount, currency) {
-        if (currency === 'USD') return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(amount);
+        if (currency === 'USD') {
+            return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(amount);
+        }
         return new Intl.NumberFormat('km-KH').format(amount) + ' ៛';
     }
 
@@ -561,7 +596,7 @@
                     <h4>${escapeHtml(g.guestName)}</h4>
                     <div>
                         <span class="badge ${badgeClass}">${badgeText}</span>
-                        <span class="guest-time"> • ${g.time || ''}</span>
+                        <span class="guest-time">• ${g.time || ''}</span>
                     </div>
                 </div>
                 <div class="guest-amount">
@@ -607,6 +642,7 @@
         document.getElementById('totalUSD').innerText = formatMoney(usd, 'USD');
         document.getElementById('totalKHR').innerText = formatMoney(khr, 'KHR');
         document.getElementById('totalGuests').innerText = gifts.length;
+        
         const totalSide = groomCount + brideCount;
         let gp = 50, bp = 50;
         if (totalSide > 0) {
@@ -630,6 +666,7 @@
         document.getElementById('submitBtn').innerHTML = '💾 Update Record';
         document.getElementById('cancelEditBtn').style.display = 'block';
         switchTab('add', document.querySelectorAll('.nav-item')[1]);
+        showToast('Edit mode: modify and save');
     }
 
     function resetForm() {
@@ -646,12 +683,15 @@
         const amount = parseFloat(document.getElementById('amount').value);
         const currency = document.getElementById('currency').value;
         const side = document.getElementById('side').value;
+        
         if (!name || isNaN(amount) || amount <= 0) {
             showToast('Please enter valid name and amount');
             return;
         }
+        
         const now = new Date();
         const timeStr = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        
         if (editId) {
             const idx = gifts.findIndex(g => g.id === editId);
             gifts[idx] = { ...gifts[idx], guestName: name, amount, currency, side, time: timeStr };
@@ -675,6 +715,7 @@
             document.getElementById('amount').value = '';
             saveData();
             renderAll();
+            document.getElementById('guestName').focus();
         }
     });
 
@@ -746,7 +787,15 @@
         }
     }
 
-    document.getElementById('currentDate').innerText = new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric' });
+    // Set current date
+    const today = new Date();
+    document.getElementById('currentDate').innerText = today.toLocaleDateString('en-US', { 
+        weekday: 'long', 
+        month: 'short', 
+        day: 'numeric' 
+    });
+
+    // Initialize
     loadData();
 </script>
 </body>
