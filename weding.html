@@ -26,7 +26,6 @@
             padding: 16px;
         }
 
-        /* === MAIN COLOR SYSTEM === */
         :root {
             --primary: #8B5E3C;
             --primary-dark: #6B3F2A;
@@ -44,7 +43,6 @@
             --shadow-lg: 0 20px 35px rgba(0,0,0,0.15);
         }
 
-        /* === APP CONTAINER === */
         .app-container {
             background: var(--cream);
             width: 100%;
@@ -57,10 +55,8 @@
             flex-direction: column;
             border-radius: 40px;
             box-shadow: var(--shadow-lg);
-            transition: all 0.3s ease;
         }
 
-        /* === HEADER === */
         header {
             padding: 24px 24px 12px;
             background: linear-gradient(135deg, var(--cream) 0%, #fdf7ed 100%);
@@ -76,7 +72,6 @@
             font-size: 0.7rem;
             color: var(--text-muted);
             font-weight: 500;
-            letter-spacing: 0.5px;
         }
         .logout-btn {
             background: transparent;
@@ -87,29 +82,24 @@
             font-weight: 600;
             color: var(--primary-dark);
             cursor: pointer;
-            transition: all 0.2s;
         }
-        .logout-btn:active { background: var(--border); transform: scale(0.96); }
         .logo-area h1 {
             font-family: 'Playfair Display', serif;
             font-size: 1.8rem;
             font-weight: 700;
             color: var(--primary-dark);
-            letter-spacing: -0.5px;
         }
         .logo-area p {
             font-size: 0.7rem;
             color: var(--text-muted);
-            letter-spacing: 1px;
         }
 
-        /* === VIEW CONTENT === */
         .view-content {
             flex: 1;
             overflow-y: auto;
             padding: 20px 20px 100px;
             display: none;
-            animation: fadeSlide 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            animation: fadeSlide 0.3s ease;
         }
         .view-content.active { display: block; }
         @keyframes fadeSlide {
@@ -117,7 +107,6 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* === SUMMARY CARD === */
         .summary-card {
             background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
             border-radius: 32px;
@@ -125,23 +114,11 @@
             color: white;
             margin-bottom: 28px;
             box-shadow: var(--shadow-md);
-            position: relative;
-            overflow: hidden;
-        }
-        .summary-card::before {
-            content: "✦";
-            position: absolute;
-            right: 10px;
-            top: -20px;
-            font-size: 80px;
-            opacity: 0.08;
-            font-family: serif;
         }
         .summary-title {
             font-size: 0.7rem;
             text-transform: uppercase;
             letter-spacing: 2px;
-            font-weight: 500;
             opacity: 0.85;
         }
         .summary-amount {
@@ -162,7 +139,7 @@
             padding: 10px 16px;
             flex: 1;
         }
-        .stat-pill p { font-size: 0.6rem; opacity: 0.8; margin-bottom: 4px; text-transform: uppercase; }
+        .stat-pill p { font-size: 0.6rem; opacity: 0.8; margin-bottom: 4px; }
         .stat-pill h3 { font-size: 1.1rem; font-weight: 700; }
 
         .side-progress {
@@ -182,7 +159,6 @@
             font-weight: 500;
         }
 
-        /* === SECTION TITLES === */
         .section-title {
             font-family: 'Playfair Display', serif;
             font-size: 1.3rem;
@@ -195,7 +171,6 @@
         }
         .section-title span { background: var(--accent-soft); width: 30px; height: 2px; flex: 1; }
 
-        /* === GUEST CARDS === */
         .guest-list {
             display: flex;
             flex-direction: column;
@@ -210,9 +185,7 @@
             align-items: center;
             box-shadow: var(--shadow-sm);
             border: 1px solid var(--border);
-            transition: all 0.2s;
         }
-        .guest-card:active { transform: scale(0.99); background: #fefaf2; }
         .guest-info h4 { 
             font-size: 1rem; 
             font-weight: 700; 
@@ -255,7 +228,6 @@
         .edit-btn { color: var(--primary-dark); }
         .delete-btn { color: var(--danger); }
 
-        /* === FORM CONTAINER === */
         .form-container {
             background: white;
             border-radius: 32px;
@@ -281,12 +253,10 @@
             border-radius: 28px;
             font-size: 0.9rem;
             font-family: inherit;
-            transition: 0.2s;
         }
         input:focus, select:focus {
             outline: none;
             border-color: var(--accent);
-            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.15);
         }
         .quick-chips {
             display: flex;
@@ -302,10 +272,8 @@
             font-weight: 600;
             color: var(--primary);
             cursor: pointer;
-            transition: all 0.15s;
             border: 1px solid var(--border);
         }
-        .chip:active { background: var(--accent); color: white; transform: scale(0.95); }
 
         .btn-primary {
             width: 100%;
@@ -317,13 +285,9 @@
             color: white;
             font-size: 0.9rem;
             cursor: pointer;
-            transition: 0.2s;
             margin-top: 8px;
-            font-family: inherit;
         }
-        .btn-primary:active { transform: scale(0.97); opacity: 0.9; }
 
-        /* === SEARCH & ACTIONS === */
         .search-container {
             position: relative;
             margin-bottom: 20px;
@@ -359,7 +323,6 @@
         .export-btn { color: var(--primary); }
         .clear-btn { color: var(--danger); }
 
-        /* === BOTTOM NAVIGATION === */
         .bottom-nav {
             position: absolute;
             bottom: 0;
@@ -381,7 +344,6 @@
             gap: 4px;
             color: var(--text-muted);
             cursor: pointer;
-            transition: all 0.2s;
             flex: 1;
         }
         .nav-item svg {
@@ -410,9 +372,6 @@
             box-shadow: 0 8px 20px rgba(139, 94, 60, 0.3);
         }
         .nav-item.center-btn span { display: none; }
-        .nav-item.center-btn svg { stroke: white; stroke-width: 2; }
-
-        /* === TOAST === */
         .toast {
             position: absolute;
             top: -80px;
@@ -423,11 +382,8 @@
             padding: 12px 24px;
             border-radius: 60px;
             font-size: 0.8rem;
-            font-weight: 500;
             z-index: 200;
             transition: top 0.3s ease;
-            white-space: nowrap;
-            box-shadow: var(--shadow-md);
         }
         .toast.show { top: 70px; }
         .empty-state {
@@ -442,7 +398,6 @@
 <div id="toast" class="toast"><span>✨</span> <span id="toastMsg">Saved</span></div>
 
 <div class="app-container">
-    <!-- Header -->
     <header>
         <div class="header-top">
             <span class="date-badge" id="currentDate"></span>
@@ -454,7 +409,6 @@
         </div>
     </header>
 
-    <!-- Dashboard View -->
     <main id="view-home" class="view-content active">
         <div class="summary-card">
             <div class="summary-title">TOTAL BALANCE (USD)</div>
@@ -476,7 +430,6 @@
         <div id="recentList" class="guest-list"></div>
     </main>
 
-    <!-- Add/Edit View -->
     <main id="view-add" class="view-content">
         <div class="section-title" style="margin-top:0"><span>✎</span> Record a Gift <span></span></div>
         <div class="form-container">
@@ -517,7 +470,6 @@
         </div>
     </main>
 
-    <!-- Registry View -->
     <main id="view-list" class="view-content">
         <div class="search-container">
             <svg class="search-icon" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
@@ -530,7 +482,6 @@
         <div id="fullList" class="guest-list"></div>
     </main>
 
-    <!-- Bottom Navigation -->
     <nav class="bottom-nav">
         <div class="nav-item active" onclick="switchTab('home', this)">
             <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
@@ -548,22 +499,18 @@
 </div>
 
 <script>
-    // ==================== AUTH & USER SYSTEM ====================
     let currentUser = null;
     let gifts = [];
     let editId = null;
 
-    // Check saved session
     const saved = localStorage.getItem('wedding_system_user');
     if (saved) {
         currentUser = JSON.parse(saved);
     } else {
-        // auto create demo user for seamless experience
         currentUser = { username: 'couple' };
         localStorage.setItem('wedding_system_user', JSON.stringify(currentUser));
     }
 
-    // Load user data
     function loadData() {
         const key = `wedding_${currentUser.username}`;
         const stored = localStorage.getItem(key);
@@ -576,7 +523,6 @@
         localStorage.setItem(key, JSON.stringify(gifts));
     }
 
-    // Helper functions
     function formatMoney(amount, currency) {
         if (currency === 'USD') return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(amount);
         return new Intl.NumberFormat('km-KH').format(amount) + ' ៛';
@@ -684,7 +630,6 @@
         document.getElementById('submitBtn').innerHTML = '💾 Update Record';
         document.getElementById('cancelEditBtn').style.display = 'block';
         switchTab('add', document.querySelectorAll('.nav-item')[1]);
-        showToast('Edit mode: modify and save');
     }
 
     function resetForm() {
@@ -730,7 +675,6 @@
             document.getElementById('amount').value = '';
             saveData();
             renderAll();
-            document.getElementById('guestName').focus();
         }
     });
 
@@ -802,11 +746,7 @@
         }
     }
 
-    // Set current date
-    const today = new Date();
-    document.getElementById('currentDate').innerText = today.toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric' });
-
-    // Initialize
+    document.getElementById('currentDate').innerText = new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric' });
     loadData();
 </script>
 </body>
